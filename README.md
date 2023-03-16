@@ -17,6 +17,33 @@ Monitors performance metrics (bandwidth, number of packets discarded etc.) using
 -   Make sure `netdata` user can execute `/usr/bin/ethtool` or wherever your binary is.
 -   `poll_seconds` is how often in seconds the tool is polled for as an integer.
 
+## Installation ##
+
+### General ###
+The path to the NetData installation refered to in this readme is `/usr/libexec/netdata/`. For some NetData installations the path may vary, e.g. `/usr/lib/x86_64-linux-gnu/netdata`.
+
+With default NetData installation copy the ethtool.chart.py script to `/usr/libexec/netdata/python.d/` and the ethtool.conf config file to `/etc/netdata/python.d/`.
+
+Then restart NetData to activate the plugin.
+
+To disable the ethtool plugin, edit `/etc/netdata/python.d.conf` and add `ethtool: no`.
+
+
+### Installation Example ###
+
+Example for standard NetData installation under Ubuntu, working with Python >=2.6 and >=3.2:
+
+```
+cd /tmp/
+
+git clone https://github.com/ghanapunq/netdata_ethtool_plugin.git --depth 1
+
+sudo cp netdata_ethtool_plugin/ethtool.chart.py /usr/libexec/netdata/python.d/
+
+sudo cp netdata_ethtool_plugin/ethtool.conf /etc/netdata/python.d/
+```
+
+
 ## Charts
 
 It produces the following charts:
